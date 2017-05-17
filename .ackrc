@@ -1,0 +1,5 @@
+--color
+
+--ignore-directory=is:node_modules
+--ignore-directory=is:log
+--ignore-directory=is:tmp
