@@ -1,127 +1,78 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
+source $HOME/.config/nvim/plugins.vim
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+source $HOME/.config/nvim/keymaps.vim
 
-Plugin 'VundleVim/Vundle.vim'
+source $HOME/.config/nvim/wildignore.vim
 
-Plugin 'tpope/vim-fugitive'
+language en_US
 
-Plugin 'L9'
-
-Plugin 'pangloss/vim-javascript'
-
-Plugin 'elixir-lang/vim-elixir'
-
-Plugin 'vim-ruby/vim-ruby'
-
-Plugin 'elzr/vim-json'
-
-Plugin 'mxw/vim-jsx'
-
-Plugin 'scrooloose/nerdtree'
-
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-
-Plugin 'mileszs/ack.vim'
-
-Plugin 'scrooloose/nerdcommenter'
-
-Plugin 'kien/ctrlp.vim'
-
-Plugin 'tpope/vim-surround'
-
-Plugin 'mattn/emmet-vim'
-
-Plugin 'posva/vim-vue'
-
-Plugin 'slim-template/vim-slim'
-
-Plugin 'fatih/vim-nginx'
-
-Plugin 'morhetz/gruvbox'
-
-call vundle#end()            " required
-filetype plugin indent on    " required
+set encoding=utf8
 
 autocmd StdinReadPre * let s:std_in=1
-" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
-let g:solarized_termcolors=256
-set t_Co=256
-"colorscheme solarized
-" colorscheme elrodeo
-let g:gruvbox_invert_tabline=1
-let g:gruvbox_invert_selection=0
-colorscheme gruvbox
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
+if (has("termguicolors"))
+ set termguicolors
+endif
 
-syntax on
-set background=dark
-highlight Comment ctermfg=darkblue
+" Theme
+colorscheme OceanicNext
+
+set guifont=DroidSansMono\ Nerd\ Font:h11
+
+syntax enable
 
 set relativenumber
 
 let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline_powerline_fonts = 1
-let g:airline_theme =  'base16_railscasts'
+
+
+
+" NerdTree settings
 let NERDTreeShowHidden=1
+let NERDTreeShowLineNumbers=1
 
 set laststatus=2
 
+" Indent
 set shiftwidth=2
 set expandtab
 set tabstop=2
 
-let g:ruby_path = system('echo $HOME/.rbenv/shims')
+set showcmd
 
-set showcmd 
-
-set showmatch 
+set showmatch
 set incsearch
 set ignorecase
 
 set backspace=indent,eol,start
 
-if executable('ag')
-  let g:ackprg = 'ag --vimgrep'
-endif
-
-nnoremap \a :Ack<SPACE>
-
-imap jj <Esc>
-
-nnoremap <C-n> :bnext<CR>
-nnoremap <C-p> :bprevious<CR>
+" Macros for blocks
+runtime macros/matchit.vim
 
 let g:NERDSpaceDelims = 1
 let g:NERDCompactSexyComs = 1
 
 " folding
-setlocal foldmethod=syntax
+set foldmethod=syntax
 set foldlevelstart=20
 
 set wildmenu
 
-set wildignore+=.git,.idea
-set wildignore+=*.png,*.jpg,*.gif
-
-" ignore bundles
-set wildignore+=*/vendor/bundle/*
-set wildignore+=*/vendor/bundler/*
-
-" ignore node modules
-set wildignore+=*/node_modules/*
-
-set wildignore+=*/tmp/*
-set wildignore+=*/log/*
-set wildignore+=*/public/system/*
+set colorcolumn=80
 
 set linebreak
 
-set langmap=№#,ЙQ,ЦW,УE,КR,ЕT,НY,ГU,ШI,ЩO,ЗP,Х{,Ъ},ФA,ЫS,ВD,АF,ПG,РH,ОJ,ЛK,ДL,Ж:,Э\",Ё\|,ЯZ,ЧX,СC,МV,ИB,ТN,ЬM,Б<,Ю>,йq,цw,уe,кr,еt,нy,гu,шi,щo,зp,х[,ъ],фa,ыs,вd,аf,пg,рh,оj,лk,дl,ж\\;,э',ё\\\\,яz,чx,сc,мv,иb,тn,ьm,ю.,б\\,
+let g:ctrlp_prompt_mappings = {
+  \ 'ToggleRegex()':        ['<F5>'],
+  \ 'PrtClearCache()':      ['<c-r>'],
+  \ }
 
 set noswapfile
+
+" Set title for terminal tab
+autocmd BufEnter * let &titlestring = ' ' . expand("%:t")
+set title
