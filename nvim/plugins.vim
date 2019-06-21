@@ -9,17 +9,15 @@ Plugin 'L9'
 
 Plugin 'scrooloose/nerdtree'
 
-Plugin 'mileszs/ack.vim'
-
 Plugin 'scrooloose/nerdcommenter'
+
+Plugin 'mileszs/ack.vim'
 
 Plugin 'kien/ctrlp.vim'
 
 Plugin 'tpope/vim-surround'
 
 Plugin 'mattn/emmet-vim'
-
-Plugin 'wesQ3/vim-windowswap'
 
 Plugin 'mhinz/vim-startify'
 
@@ -31,7 +29,6 @@ Plugin 'ntpeters/vim-better-whitespace'
 
 " Themes
 Plugin 'vim-airline/vim-airline'
-" Plugin 'vim-airline/vim-airline-themes'
 
 Plugin 'mhartington/oceanic-next'
 
