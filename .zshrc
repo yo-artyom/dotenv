@@ -41,7 +41,6 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 alias phs="iex -S mix phoenix.server"
 
 alias v="nvim"
-alias vim="nvim"
 
 alias trde='trans :de'
 alias trru='trans :ru'
@@ -58,5 +57,7 @@ function ca(){
 
 bindkey "$terminfo[kcuu1]" history-substring-search-up
 bindkey "$terminfo[kcud1]" history-substring-search-down
+
+export LC_ALL=en_US.UTF-8
 
 prompt_context () { }
