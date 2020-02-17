@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =7
+let g:netrw_dirhist_7='/Users/amalyshev/dotenv'
+let g:netrw_dirhist_6='/Users/amalyshev/dotenv/nvim'
+let g:netrw_dirhist_5='/Users/amalyshev/dotenv'
+let g:netrw_dirhist_4='/Users/amalyshev/projects/shop/app/frontend/packs/pages/product'
+let g:netrw_dirhist_3='/Users/amalyshev/projects/Babbel/deeplinks.microverse/deeplinks.lambda'
+let g:netrw_dirhist_2='/Users/amalyshev/projects/Babbel/deeplinks.microverse'
+let g:netrw_dirhist_1='/Users/amalyshev/projects/Babbel/deeplinks.microverse/deeplinks.lambda'
+let g:netrw_dirhist_0='/Users/amalyshev/projects/Babbel/deeplinks.microverse'
+let g:netrw_dirhist_9='/Users/amalyshev/projects/Babbel/learned-items.babbel'
+let g:netrw_dirhist_8='/Users/amalyshev/projects/shop/.git'

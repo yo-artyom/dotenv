@@ -1,56 +1,54 @@
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+call plug#begin('~/.vim/bundle')
 
-Plugin 'VundleVim/Vundle.vim'
+Plug 'VundleVim/Vundle.vim'
 
-Plugin 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'
 
-Plugin 'L9'
+Plug 'scrooloose/nerdtree'
 
-Plugin 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdcommenter'
 
-Plugin 'scrooloose/nerdcommenter'
+Plug 'mileszs/ack.vim'
 
-Plugin 'mileszs/ack.vim'
+Plug 'kien/ctrlp.vim'
 
-Plugin 'kien/ctrlp.vim'
+Plug 'tpope/vim-surround'
 
-Plugin 'tpope/vim-surround'
+Plug 'mattn/emmet-vim'
 
-Plugin 'mattn/emmet-vim'
+Plug 'mhinz/vim-startify'
 
-Plugin 'mhinz/vim-startify'
+Plug 'Lokaltog/vim-easymotion'
 
-Plugin 'Lokaltog/vim-easymotion'
+Plug 'AndrewRadev/splitjoin.vim'
 
-Plugin 'AndrewRadev/splitjoin.vim'
-
-Plugin 'ntpeters/vim-better-whitespace'
+Plug 'ntpeters/vim-better-whitespace'
 
 " Themes
-Plugin 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline'
 
-Plugin 'mhartington/oceanic-next'
+Plug 'mhartington/oceanic-next'
 
 " Icons
-Plugin 'ryanoasis/vim-devicons'
+Plug 'ryanoasis/vim-devicons'
 
-" Syntax plugins
-Plugin 'pangloss/vim-javascript'
+" Syntax Plugs
+Plug 'pangloss/vim-javascript'
 
-Plugin 'elixir-lang/vim-elixir'
+Plug 'elixir-lang/vim-elixir'
 
-Plugin 'vim-ruby/vim-ruby'
+Plug 'vim-ruby/vim-ruby'
 
-Plugin 'elzr/vim-json'
+Plug 'elzr/vim-json'
 
-Plugin 'mxw/vim-jsx'
+Plug 'mxw/vim-jsx'
 
-Plugin 'posva/vim-vue'
+Plug 'posva/vim-vue'
 
-Plugin 'slim-template/vim-slim'
+Plug 'slim-template/vim-slim'
 
-Plugin 'fatih/vim-nginx'
+Plug 'fatih/vim-nginx'
 
-call vundle#end()
-filetype plugin indent on
+Plug 'vimwiki/vimwiki'
+
+call plug#end()

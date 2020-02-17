@@ -1,5 +1,8 @@
+
 nnoremap \a :Ack<SPACE>
-nnoremap \p :NERDTree<ENTER>
+
+nnoremap \p :NERDTree<CR>
+
 
 " keys for buffer switch
 map gn :bn<cr>
@@ -7,7 +10,7 @@ map gp :bp<cr>
 map gd :bd<cr>
 
 " Mappings to access buffers
-" Example of command in execute: nnoremap <Leader>1 :1b<CR>
+" Example command: nnoremap <Leader>1 :1b<CR>
 for i in range(1,20)
   let key_comb = 'nnoremap <Leader>' . i
   let command = ":" . i . "b<CR>"
@@ -19,14 +22,14 @@ endfor
 nnoremap ,v <C-w>v
 nnoremap ,h <C-w>s
 
-" debug
+" Debug
 autocmd FileType elixir nnoremap ,p Orequire IEx; IEx.pry<ESC>
 autocmd FileType python nnoremap ,p Oimport code; code.interact(local=dict(globals(), **locals()))<ESC>
 nnoremap ,p Obinding.pry<ESC>
 
 imap jj <Esc>
 
-" copy to clipboard map
+" Copy to clipboard map
 vmap <leader>o "*y
 
 " Press Space to turn off highlighting and clear any message already displayed.

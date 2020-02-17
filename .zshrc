@@ -1,8 +1,7 @@
 export ZSH="$HOME/.oh-my-zsh"
 
 ZSH_THEME="agnoster"
-
-plugins=(git history-substring-search bundler rails ruby colorize)
+plugins=(tmux git history-substring-search bundler rails ruby)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -45,20 +44,11 @@ alias v="nvim"
 alias trde='trans :de'
 alias trru='trans :ru'
 
-alias t='tig'
-
-function ca(){
-  if [ -n "$1" ]; then
-    colorize $1
-  else
-    echo 'colorize called without params'
-  fi
-}
-
-bindkey "$terminfo[kcuu1]" history-substring-search-up
-bindkey "$terminfo[kcud1]" history-substring-search-down
+# bindkey "$terminfo[kcuu1]" history-substring-search-up
+# bindkey "$terminfo[kcud1]" history-substring-search-down
 
 export LC_ALL=en_US.UTF-8
 
 prompt_context () { }
+
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
