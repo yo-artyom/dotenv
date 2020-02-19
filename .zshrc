@@ -49,6 +49,9 @@ alias trru='trans :ru'
 
 export LC_ALL=en_US.UTF-8
 
+bindkey "^[[1;3C" forward-word
+bindkey "^[[1;3D" backward-word
+
 prompt_context () { }
 
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
