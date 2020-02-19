@@ -7,13 +7,6 @@ source $ZSH/oh-my-zsh.sh
 
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 
-export PATH="$HOME/anaconda3/bin:$PATH"
-
-export PATH=$PATH:/usr/local/go/bin
-
-export GOPATH=$HOME/go;
-export PATH=$PATH:$GOPATH/bin;
-
 export EDITOR='nvim'
 
 export ACKRC="$HOME/.ackrc"
@@ -35,7 +28,6 @@ alias npm='unalias node npm && load_nvm && npm'
 
 ## ##
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
 
 alias phs="iex -S mix phoenix.server"
 
