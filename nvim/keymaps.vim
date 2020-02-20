@@ -1,7 +1,7 @@
 
 nnoremap \a :Ack<SPACE>
 
-nnoremap \p :NERDTree<CR>
+nnoremap \p :NERDTreeToggle<CR>
 
 
 " keys for buffer switch
