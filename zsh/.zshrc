@@ -6,12 +6,19 @@ plugins=(tmux git history-substring-search bundler rails ruby)
 source $ZSH/oh-my-zsh.sh
 
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+export PATH="$HOME/.rbenv/bin:$PATH"
+export PATH="$PATH:/usr/local/go/bin"
+export PATH="$PATH:/Users/$USER/go/bin"
+
+
+export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
 
 export EDITOR='nvim'
 
 export ACKRC="$HOME/.ackrc"
 
-export PATH="$HOME/.rbenv/bin:$PATH"
+export GOPATH="/Users/$USER/go:$HOME/Learning/Go"
+export GODOCC_STYLE="solarized-dark"
 
 eval "$(rbenv init -)"
 export RBENV_ROOT="/usr/local/rbenv"
@@ -31,7 +38,9 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 
 alias phs="iex -S mix phoenix.server"
 
+## Aliases
 alias v="nvim"
+alias b="bat"
 
 alias trde='trans :de'
 alias trru='trans :ru'
@@ -47,3 +56,5 @@ bindkey "^[[1;3D" backward-word
 prompt_context () { }
 
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+export PATH="$HOME/lessonnine/development.cli/bin:$PATH"
+source "$HOME/lessonnine/development.cli/completions/babbel.zsh"

@@ -62,3 +62,7 @@ set noswapfile
 " Set title for terminal tab
 autocmd BufEnter * let &titlestring = ' ' . expand("%:t")
 set title
+
+" VimWiki
+let g:vimwiki_list = [{'path': '~/vimwiki/',
+                      \ 'syntax': 'markdown', 'ext': '.md'}]

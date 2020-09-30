@@ -1,0 +1,1 @@
+squash = !sh -c '<path-to>/squash.sh $1' -
