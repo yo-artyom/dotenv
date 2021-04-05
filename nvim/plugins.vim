@@ -20,8 +20,6 @@ Plug 'mhinz/vim-startify'
 
 Plug 'Lokaltog/vim-easymotion'
 
-Plug 'AndrewRadev/splitjoin.vim'
-
 Plug 'ntpeters/vim-better-whitespace'
 
 " Themes
@@ -34,6 +32,8 @@ Plug 'ryanoasis/vim-devicons'
 
 " Syntax Plugs
 Plug 'pangloss/vim-javascript'
+
+Plug 'fatih/vim-go'
 
 Plug 'elixir-lang/vim-elixir'
 
