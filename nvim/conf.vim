@@ -27,6 +27,7 @@ let g:airline_powerline_fonts = 1
 " NerdTree settings
 let NERDTreeShowHidden=1
 let NERDTreeShowLineNumbers=1
+let g:NERDTreeWinPos="right"
 
 " Indent
 set shiftwidth=2
@@ -71,3 +72,15 @@ set title
 " VimWiki
 let g:vimwiki_list = [{'path': '~/vimwiki/',
                       \ 'syntax': 'markdown', 'ext': '.md'}]
+
+"Status-line
+set statusline=
+set statusline+=%#IncSearch#
+set statusline+=\ %y
+set statusline+=\ %r
+set statusline+=%#CursorLineNr#
+set statusline+=\ %F
+set statusline+=%= "Right side settings
+set statusline+=%#Search#
+set statusline+=\ %l/%L
+set statusline+=\ [%c]

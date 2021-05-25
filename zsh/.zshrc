@@ -10,7 +10,6 @@ export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH="$PATH:/usr/local/go/bin"
 export PATH="$PATH:/Users/$USER/go/bin"
 
-
 export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
 
 export EDITOR='nvim'
@@ -27,11 +26,6 @@ if [ -d "${RBENV_ROOT}" ]; then
 fi
 
 if which rbenv > /dev/null; then eval "$(rbenv init - zsh)"; fi
-
-## NPM ##
-alias load_nvm='export NVM_DIR="$HOME/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"'
-alias node='unalias node npm && load_nvm && node'
-alias npm='unalias node npm && load_nvm && npm'
 
 ## ##
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
@@ -54,7 +48,3 @@ bindkey "^[[1;3C" forward-word
 bindkey "^[[1;3D" backward-word
 
 prompt_context () { }
-
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-export PATH="$HOME/lessonnine/development.cli/bin:$PATH"
-source "$HOME/lessonnine/development.cli/completions/babbel.zsh"

@@ -6,3 +6,5 @@ brew "rbenv"
 brew "tmux"
 brew "zsh"
 brew "zsh-completions"
+brew "git-extras"
+

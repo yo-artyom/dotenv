@@ -4,7 +4,13 @@ nnoremap d "td
 nnoremap <leader>a :Ack<SPACE>
 nnoremap <leader>p :NERDTreeToggle<CR>
 
-imap jj <Esc>
+" imap jj <Esc>
+nnoremap <C-space> i
+imap <C-space> <Esc>
+
+nnoremap <C-j> i
+imap <C-j> <Esc>
+
 
 nnoremap <leader><Space> :CtrlP<CR>
 
