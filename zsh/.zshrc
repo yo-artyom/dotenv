@@ -34,6 +34,7 @@ alias phs="iex -S mix phoenix.server"
 
 ## Aliases
 alias v="nvim"
+alias vim="nvim"
 alias b="bat"
 
 alias trde='trans :de'
