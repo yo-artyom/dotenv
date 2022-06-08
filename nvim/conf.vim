@@ -18,6 +18,7 @@ endif
 
 " Theme
 colorscheme OceanicNext
+
 set guifont=DroidSansMono\ Nerd\ Font:h11
 
 let g:airline#extensions#tabline#enabled = 1
@@ -73,14 +74,5 @@ set title
 let g:vimwiki_list = [{'path': '~/vimwiki/',
                       \ 'syntax': 'markdown', 'ext': '.md'}]
 
-"Status-line
-set statusline=
-set statusline+=%#IncSearch#
-set statusline+=\ %y
-set statusline+=\ %r
-set statusline+=%#CursorLineNr#
-set statusline+=\ %F
-set statusline+=%= "Right side settings
-set statusline+=%#Search#
-set statusline+=\ %l/%L
-set statusline+=\ [%c]
+" CtrlP
+let g:ctrlp_custom_ignore="storage"

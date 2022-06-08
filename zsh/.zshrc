@@ -19,6 +19,11 @@ export ACKRC="$HOME/.ackrc"
 export GOPATH="/Users/$USER/go:$HOME/Learning/Go"
 export GODOCC_STYLE="solarized-dark"
 
+export LD_LIBRARY_PATH="/usr/local/lib:$LD_LIBRARY_PATH"
+export PKG_CONFIG_PATH="/usr/local/lib/pkgconfig:$PKG_CONFIG_PATH"
+
+# export CARDANO_NODE_SOCKET_PATH="$HOME/cardano-src/db/node.socket"
+
 eval "$(rbenv init -)"
 export RBENV_ROOT="/usr/local/rbenv"
 if [ -d "${RBENV_ROOT}" ]; then
@@ -48,4 +53,14 @@ export LC_ALL=en_US.UTF-8
 bindkey "^[[1;3C" forward-word
 bindkey "^[[1;3D" backward-word
 
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
 prompt_context () { }
+
+[ -f "/Users/amalyshev/.ghcup/env" ] && source "/Users/amalyshev/.ghcup/env" # ghcup-env
+export PATH="/usr/local/opt/postgresql@13/bin:$PATH"
+export PATH="/usr/local/opt/postgresql@13/bin:$PATH"
+export PATH="$HOME/lessonnine/development.cli/bin:$PATH"
+export PATH="$HOME/lessonnine/development.cli/bin:$PATH"

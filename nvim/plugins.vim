@@ -41,14 +41,14 @@ Plug 'vim-ruby/vim-ruby'
 
 Plug 'elzr/vim-json'
 
-Plug 'mxw/vim-jsx'
-
 Plug 'posva/vim-vue'
 
 Plug 'slim-template/vim-slim'
 
 Plug 'fatih/vim-nginx'
 
-Plug 'vimwiki/vimwiki'
+Plug 'tomlion/vim-solidity'
 
+" Mics
+Plug 'vimwiki/vimwiki'
 call plug#end()
