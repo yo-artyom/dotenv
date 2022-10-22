@@ -26,6 +26,7 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'vim-airline/vim-airline'
 
 Plug 'mhartington/oceanic-next'
+Plug 'humanoid-colors/vim-humanoid-colorscheme'
 
 " Icons
 Plug 'ryanoasis/vim-devicons'

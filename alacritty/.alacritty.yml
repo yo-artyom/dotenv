@@ -164,7 +164,8 @@ font:
 
 # If `true`, bold text is drawn using the bright color variants.
 #draw_bold_text_with_bright_colors: true
-# Colors (Tomorrow Night Bright)
+#
+# Colors (Ayu Mirage)
 colors:
   # Default colors
   primary:
@@ -173,25 +174,25 @@ colors:
 
   # Normal colors
   normal:
-    black: '#191E2A'
-    red: '#FF3333'
-    green: '#BAE67E'
-    yellow: '#FFA759'
-    blue: '#73D0FF'
-    magenta: '#FFD580'
-    cyan: '#95E6CB'
-    white: '#C7C7C7'
+    black:    '#191E2A'
+    red:      '#FF3333'
+    green:    '#BAE67E'
+    yellow:   '#FFA759'
+    blue:     '#73D0FF'
+    magenta:  '#FFD580'
+    cyan:     '#95E6CB'
+    white:    '#C7C7C7'
 
   # Bright colors
   bright:
-    black: '#686868'
-    red: '#F27983'
-    green: '#A6CC70'
-    yellow: '#FFCC66'
-    blue: '#5CCFE6'
+    black:   '#686868'
+    red:     '#F27983'
+    green:   '#A6CC70'
+    yellow:  '#FFCC66'
+    blue:    '#5CCFE6'
     magenta: '#FFEE99'
-    cyan: '#95E6CB'
-    white: '#FFFFFF'
+    cyan:    '#95E6CB'
+    white:   '#FFFFFF'
 # Visual Bell
 #
 # Any time the BEL code is received, Alacritty "rings" the visual bell. Once
@@ -221,7 +222,7 @@ colors:
 #
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
-background_opacity: 0.8
+window.opacity: 0.8
 
 #selection:
 #semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"

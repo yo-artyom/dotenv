@@ -37,6 +37,13 @@ nnoremap <leader>q :cclose<CR>
 nnoremap ,v <C-w>v
 nnoremap ,h <C-w>s
 
+noremap <silent> <C-S-Right> :vertical resize +5<CR>
+noremap <silent> <C-S-Down> :resize +5<CR>
+
+noremap <silent> <C-S-Left> :vertical resize -5<CR>
+noremap <silent> <C-S-Up> :resize -5<CR>
+
+
 " Debug shortcuts
 autocmd FileType elixir nnoremap ,p Orequire IEx; IEx.pry<ESC>
 autocmd FileType python nnoremap ,p Oimport code; code.interact(local=dict(globals(), **locals()))<ESC>
@@ -48,5 +55,6 @@ vmap <leader>o "*y
 " Press Space to turn off highlighting and clear any message already displayed.
 :nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 
+:nnoremap <expr> <F8> ':%s/\<'.expand('<cword>').'\>/<&>/g<CR>'
 
-set langmap=№#,ЙQ,ЦW,УE,КR,ЕT,НY,ГU,ШI,ЩO,ЗP,Х{,Ъ},ФA,ЫS,ВD,АF,ПG,РH,ОJ,ЛK,ДL,Ж:,Э\",Ё\|,ЯZ,ЧX,СC,МV,ИB,ТN,ЬM,Б<,Ю>,йq,цw,уe,кr,еt,нy,гu,шi,щo,зp,х[,ъ],фa,ыs,вd,аf,пg,рh,оj,лk,дl,ж\\;,э',ё\\\\,яz,чx,сc,мv,иb,тn,ьm,ю.,б\\,
+autocmd FileType go nnoremap dff :GoDef<CR>
