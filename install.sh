@@ -2,6 +2,19 @@
 
 echo 'Creating symlinks to configs...'
 
+echo "\n\t[Oh my zsh install]\n"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+echo "\n\t[Brew install]\n"
+curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh
+
+echo "\n\t[Brew deps]\n"
+brew bundle
+
+echo "\n\t[Plug install]\n"
+sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+
 # nvim config copy
 ln -sf `pwd`/nvim/.vimrc  ~/.vimrc
 ln -sf `pwd`/nvim ~/.config/nvim
@@ -13,15 +26,6 @@ ln -sf `pwd`/alacritty/.alacritty.yml ~/.alacritty.yml
 
 # Scripts copy
 ln -sf `pwd`/scripts/*.sh /usr/local/bin/
-echo 'Installing oh-my-zsh'
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
-echo 'Installing brew dependencies'
-brew bundle
-
-echo 'Installing Plug'
-sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
 # Git part
 ln -sf `pwd`/git_configs/.global_gitignore ~/.global_gitignore

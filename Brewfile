@@ -1,5 +1,6 @@
 brew "ack"
 brew "bat"
+brew "go"
 brew "jq"
 brew "neovim"
 brew "rbenv"
