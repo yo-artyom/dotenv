@@ -24,6 +24,7 @@ Plug 'ntpeters/vim-better-whitespace'
 
 " Themes
 Plug 'vim-airline/vim-airline'
+Plug 'edkolev/tmuxline.vim'
 
 Plug 'mhartington/oceanic-next'
 Plug 'humanoid-colors/vim-humanoid-colorscheme'
