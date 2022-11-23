@@ -33,7 +33,7 @@ alias v="nvim"
 alias vim="nvim"
 alias b="bat"
 alias ls="lsd"
-alias tdm="/usr/local/bin/toggleDarkTheme.sh"
+alias tdm="/usr/local/bin/toggle_dark_theme.sh"
 
 alias phs="iex -S mix phoenix.server"
 
