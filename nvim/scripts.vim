@@ -9,9 +9,29 @@ function! DarkModeToggle()
        set background=light
        colorscheme humanoid
        let s:mybg = "light"
+       AirlineTheme oceanicnextlight
     endif
-    " set background=light
-    " colorscheme OceanicNext
+
+  try
+    execute "AirlineRefresh"
+  catch
+  endtry
+endfunction
+
+function! ToggleThemeTo(toggleTo)
+    if (a:toggleTo ==? "dark")
+       set background=dark
+       colorscheme OceanicNext
+    else
+       set background=light
+       colorscheme humanoid
+       AirlineTheme oceanicnextlight
+    endif
+
+  try
+    execute "AirlineRefresh"
+  catch
+  endtry
 endfunction
 
 nnoremap <silent> <leader>td :call DarkModeToggle()<cr>

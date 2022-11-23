@@ -17,6 +17,8 @@ if (has("termguicolors"))
 endif
 
 " Theme
+" Bug: if theme is switched by an external script, vim still load with the
+" dark theme
 colorscheme OceanicNext
 
 set guifont=DroidSansMono\ Nerd\ Font:h11
@@ -29,6 +31,9 @@ let g:airline_powerline_fonts = 1
 let NERDTreeShowHidden=1
 let NERDTreeShowLineNumbers=1
 let g:NERDTreeWinPos="right"
+" If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
+autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
+    \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
 
 " Indent
 set shiftwidth=2

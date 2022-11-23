@@ -2,9 +2,6 @@
 
 echo 'Creating symlinks to configs...'
 
-echo "\n\t[Oh my zsh install]\n"
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
 echo "\n\t[Brew install]\n"
 curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh
 
@@ -19,10 +16,14 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 ln -sf `pwd`/nvim/vimrc  ~/.vimrc
 ln -sf `pwd`/nvim ~/.config/nvim
 
+ln -sf `pwd`/tmux/ ~/.tmux
+ln -sf `pwd`/tmux/tmux.conf ~/.tmux.conf
+
+ln -sf `pwd`/alacritty/alacritty.yml ~/.alacritty.yml
+ln -sf `pwd`/alacritty/ ~/.alacritty
+
 ln -sf `pwd`/zsh/zshrc ~/.zshrc
 ln -sf `pwd`/ack/ackrc ~/.ackrc
-ln -sf `pwd`/tmux/tmux.conf ~/.tmux.conf
-ln -sf `pwd`/alacritty/alacritty.yml ~/.alacritty.yml
 
 # Scripts copy
 ln -sf `pwd`/scripts/*.sh /usr/local/bin/
