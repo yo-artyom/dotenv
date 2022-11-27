@@ -17,9 +17,15 @@ if (has("termguicolors"))
 endif
 
 " Theme
-" Bug: if theme is switched by an external script, vim still load with the
 " dark theme
-colorscheme OceanicNext
+if currentTheme == "dark"
+  set background=dark
+  colorscheme OceanicNext
+else
+  set background=light
+  colorscheme humanoid
+  let g:airline_theme="oceanicnextlight"
+endif
 
 set guifont=DroidSansMono\ Nerd\ Font:h11
 

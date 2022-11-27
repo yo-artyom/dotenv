@@ -51,8 +51,6 @@ Plug 'fatih/vim-nginx'
 
 Plug 'tomlion/vim-solidity'
 
-Plug 'neovim/nvim-lspconfig'
-
 " Mics
 Plug 'vimwiki/vimwiki'
 call plug#end()

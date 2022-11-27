@@ -1,11 +1,22 @@
+" plug deps
 source $HOME/.config/nvim/plugins.vim
 
+" responsible for keeping current color scheme, under external script control
+" see ../scripts/toggle_dark_theme.sh
+source $HOME/.config/nvim/color.vim
+
+" custom scripts
 source $HOME/.config/nvim/scripts.vim
 
+" base conf
 source $HOME/.config/nvim/conf.vim
 
+" key maps
 source $HOME/.config/nvim/keymaps.vim
 
+" config for default vim netrw file explorer
 source $HOME/.config/nvim/netrw.vim
 
+" ctrlP wildignore
 source $HOME/.config/nvim/wildignore.vim
+
