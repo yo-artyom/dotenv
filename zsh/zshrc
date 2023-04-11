@@ -27,7 +27,6 @@ ZSH_THEME="agnoster"
 
 source $ZSH/oh-my-zsh.sh
 
-
 ## Aliases
 alias v="nvim"
 alias vim="nvim"

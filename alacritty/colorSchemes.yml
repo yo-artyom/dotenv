@@ -32,27 +32,31 @@ schemes:
 
   dark: &dark
     primary:
-      background: '#202734'
-      foreground: '#CBCCC6'
+      background: '0x1f1f28'
+      foreground: '0xdcd7ba'
 
     normal:
-      black:    '#191E2A'
-      red:      '#FF3333'
-      green:    '#BAE67E'
-      yellow:   '#FFA759'
-      blue:     '#73D0FF'
-      magenta:  '#FFD580'
-      cyan:     '#95E6CB'
-      white:    '#C7C7C7'
+      black:   '0x090618'
+      red:     '0xc34043'
+      green:   '0x76946a'
+      yellow:  '0xc0a36e'
+      blue:    '0x7e9cd8'
+      magenta: '0x957fb8'
+      cyan:    '0x6a9589'
+      white:   '0xc8c093'
 
     bright:
-      black:   '#686868'
-      red:     '#F27983'
-      green:   '#A6CC70'
-      yellow:  '#FFCC66'
-      blue:    '#5CCFE6'
-      magenta: '#FFEE99'
-      cyan:    '#95E6CB'
-      white:   '#FFFFFF'
+      black:   '0x727169'
+      red:     '0xe82424'
+      green:   '0x98bb6c'
+      yellow:  '0xe6c384'
+      blue:    '0x7fb4ca'
+      magenta: '0x938aa9'
+      cyan:    '0x7aa89f'
+      white:   '0xdcd7ba'
 
-colors: *light
+    selection:
+      background: '0x2d4f67'
+      foreground: '0xc8c093'
+
+colors: *dark

@@ -1,1 +1,1 @@
-let currentTheme="light"
+let currentTheme="dark"

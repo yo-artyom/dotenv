@@ -2,15 +2,13 @@
 function! ToggleThemeTo(toggleTo)
     if (a:toggleTo ==? "dark")
        set background=dark
-       colorscheme OceanicNext
+       colorscheme kanagawa
     else
        set background=light
        colorscheme humanoid
-       AirlineTheme oceanicnextlight
     endif
 
   try
-    execute "AirlineRefresh"
   catch
   endtry
 endfunction

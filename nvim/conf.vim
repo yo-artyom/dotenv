@@ -2,6 +2,8 @@ language en_US
 
 set encoding=utf8
 
+set signcolumn=yes
+
 autocmd StdinReadPre * let s:std_in=1
 
 autocmd Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
@@ -20,26 +22,35 @@ endif
 " dark theme
 if currentTheme == "dark"
   set background=dark
-  colorscheme OceanicNext
+  colorscheme kanagawa
 else
   set background=light
   colorscheme humanoid
-  let g:airline_theme="oceanicnextlight"
 endif
+
 
 set guifont=DroidSansMono\ Nerd\ Font:h11
 
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#buffer_nr_show = 1
-let g:airline_powerline_fonts = 1
+lua << END
+
+require('lualine').setup({
+  extensions = {'fugitive', 'nerdtree', 'quickfix'}
+})
+
+require("bufferline").setup{
+  options = {
+    numbers = "buffer_id",
+    diagnostics = "coc"
+   }
+ }
+END
+
 
 " NerdTree settings
 let NERDTreeShowHidden=1
 let NERDTreeShowLineNumbers=1
 let g:NERDTreeWinPos="right"
-" If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
-autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
-    \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
+let NERDTreeMinimalUI=1
 
 " Indent
 set shiftwidth=2

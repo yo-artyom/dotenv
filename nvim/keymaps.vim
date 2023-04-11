@@ -11,13 +11,14 @@ imap <C-space> <Esc>
 nnoremap <C-j> i
 imap <C-j> <Esc>
 
-
-nnoremap <leader><Space> :CtrlP<CR>
+nnoremap <leader><Space> :Files<CR>
+nnoremap <C-r> :Files<CR>
 
 " keys for buffer switch
 map gn :bn<cr>
 map gp :bp<cr>
 map gd :bd<cr>
+nnoremap <silent> gb :BufferLinePick<CR>
 
 " Mappings to access buffers
 " Example command: nnoremap <Leader>1 :1b<CR>
@@ -56,5 +57,3 @@ vmap <leader>o "*y
 :nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 
 :nnoremap <expr> <F8> ':%s/\<'.expand('<cword>').'\>/<&>/g<CR>'
-
-autocmd FileType go nnoremap dff :GoDef<CR>
