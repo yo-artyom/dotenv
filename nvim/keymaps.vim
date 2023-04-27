@@ -12,7 +12,7 @@ nnoremap <C-j> i
 imap <C-j> <Esc>
 
 nnoremap <leader><Space> :Files<CR>
-nnoremap <C-r> :Files<CR>
+nnoremap <C-p> :Files<CR>
 
 " keys for buffer switch
 map gn :bn<cr>

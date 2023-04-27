@@ -53,8 +53,25 @@ alacritty_toggle_theme () {
   sed -i "" -e "s#^colors: \*.*#colors: *$1#g" $config_path
 }
 
+# TMUX
+# switch theme, $1 is one of ['light', 'dark']
+# theme toggle achieved by replacing a single word in color scheme tmux config
+tmux_toggle_theme() {
+  if [ ! -f ~/.tmux/current_theme.conf ]
+  then
+    echo 'File ~/.tmux/current_theme.conf does not exist'
+    return
+  fi
+  # sed does not like symlinks, get the absolute path
+  config_path=$(realpath ~/.tmux/current_theme.conf)
+
+  echo "source-file ~/.tmux/$1_theme.conf" > $config_path
+  tmux source-file $config_path
+}
+
 alacritty_toggle_theme $toggleToTheme
 nvim_tmux_toggle_theme $toggleToTheme
 nvim_init_toggle_theme $toggleToTheme
+tmux_toggle_theme $toggleToTheme
 
 echo "switched to $toggleToTheme."

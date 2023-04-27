@@ -34,7 +34,7 @@ set guifont=DroidSansMono\ Nerd\ Font:h11
 lua << END
 
 require('lualine').setup({
-  extensions = {'fugitive', 'nerdtree', 'quickfix'}
+  extensions = {'fugitive', 'nerdtree', 'quickfix'},
 })
 
 require("bufferline").setup{

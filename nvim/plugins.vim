@@ -10,7 +10,6 @@ Plug 'scrooloose/nerdcommenter'
 
 Plug 'mileszs/ack.vim'
 
-Plug 'kien/ctrlp.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
