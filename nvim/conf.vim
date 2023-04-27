@@ -28,7 +28,6 @@ else
   colorscheme humanoid
 endif
 
-
 set guifont=DroidSansMono\ Nerd\ Font:h11
 
 lua << END
@@ -44,7 +43,6 @@ require("bufferline").setup{
    }
  }
 END
-
 
 " NerdTree settings
 let NERDTreeShowHidden=1
@@ -95,6 +93,3 @@ set title
 " VimWiki
 let g:vimwiki_list = [{'path': '~/vimwiki/',
                       \ 'syntax': 'markdown', 'ext': '.md'}]
-
-" CtrlP
-let g:ctrlp_custom_ignore="storage"

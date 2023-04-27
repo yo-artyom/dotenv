@@ -38,4 +38,5 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Mics
 Plug 'vimwiki/vimwiki'
+
 call plug#end()
