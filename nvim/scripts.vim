@@ -1,10 +1,12 @@
+source $HOME/.config/nvim/color.vim
+
 " toggle to switches theme between 'dark' and 'light' options
 function! ToggleThemeTo(toggleTo)
   if (a:toggleTo ==? "dark")
     set background=dark
-    colorscheme kanagawa
+    execute 'colorscheme ' . g:darkTheme
   else
     set background=light
-    colorscheme humanoid
+    execute 'colorscheme ' . g:lightTheme
   endif
 endfunction

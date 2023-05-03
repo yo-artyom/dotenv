@@ -22,10 +22,10 @@ endif
 " dark theme
 if currentTheme == "dark"
   set background=dark
-  colorscheme kanagawa
+  execute 'colorscheme ' . g:darkTheme
 else
   set background=light
-  colorscheme humanoid
+  execute 'colorscheme ' . g:lightTheme
 endif
 
 set guifont=DroidSansMono\ Nerd\ Font:h11

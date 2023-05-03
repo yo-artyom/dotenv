@@ -27,7 +27,7 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'akinsho/bufferline.nvim'
 
-Plug 'humanoid-colors/vim-humanoid-colorscheme'
+Plug 'rose-pine/neovim'
 Plug 'rebelot/kanagawa.nvim'
 
 " Icons
