@@ -3,9 +3,11 @@ export PATH=$PATH:/Users/$USER/go/bin:$PATH
 export PATH=$PATH:/Users/$USER/Library/Python/3.8/bin:$PATH
 export PATH=$PATH:/opt/homebrew/opt/ruby/bin:$PATH
 export PATH=$HOME:/.rbenv/bin:$PATH
+export PATH=$HOME:/.rbenv/bin:$PATH
 
 export PATH=$PATH:/Users/$USER/.cargo/bin
-export PATH=$PATH:/Users/amalyshev/.foundry/bin
+export PATH=$PATH:/Users/$USER/.foundry/bin
+export PATH=$PATH:/Users/$USER/dotenv/scripts
 
 export EDITOR=nvim
 

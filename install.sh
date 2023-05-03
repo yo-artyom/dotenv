@@ -30,7 +30,6 @@ ln -sf `pwd`/ack/ackrc ~/.ackrc
 
 # Scripts copy
 sudo ln -sf `pwd`/scripts/*.sh /usr/local/bin/
-
 ln -sf `pwd`/git_configs/.global_gitignore ~/.global_gitignore
 
 git config --global core.excludesfile ~/.global_gitignore
