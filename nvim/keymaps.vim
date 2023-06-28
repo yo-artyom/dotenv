@@ -11,14 +11,27 @@ imap <C-space> <Esc>
 nnoremap <C-j> i
 imap <C-j> <Esc>
 
-nnoremap <leader><Space> :Files<CR>
-nnoremap <C-p> :Files<CR>
+
+" FZF mappings
+" function FZFOpen helps to open files in the current window
+" if current window is NERDTree, it will move cursor to the next window and
+" open file there
+function! FZFOpen(command_str)
+  if (expand('%') =~# 'NERD_tree' && winnr('$') > 1)
+    exe "normal! \<c-w>\<c-w>"
+  endif
+  exe 'normal! ' . a:command_str . "\<cr>"
+endfunction
+nnoremap <silent> <C-b> :call FZFOpen(':Buffers')<CR>
+nnoremap <silent> <C-p> :call FZFOpen(':GFiles')<CR>
+nnoremap <silent> <C-g> :call FZFOpen(':Commands')<CR>
 
 " keys for buffer switch
 map gn :bn<cr>
 map gp :bp<cr>
 map gd :bd<cr>
 nnoremap <silent> gb :BufferLinePick<CR>
+nnoremap <silent> gbp :BufferLineTogglePin<CR>
 
 " Mappings to access buffers
 " Example command: nnoremap <Leader>1 :1b<CR>

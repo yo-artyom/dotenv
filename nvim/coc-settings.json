@@ -10,7 +10,15 @@
         "go"
       ]
     },
-    "solargraph.formatting": true
+    "solargraph.formatting": true,
+    "terraform": {
+			"command": "terraform-ls",
+			"args": ["serve"],
+			"filetypes": [
+				"terraform",
+				"tf"
+			]
+		}
   }
 }
 

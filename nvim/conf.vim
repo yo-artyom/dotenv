@@ -48,7 +48,7 @@ END
 let NERDTreeShowHidden=1
 let NERDTreeShowLineNumbers=1
 let g:NERDTreeWinPos="right"
-let NERDTreeMinimalUI=1
+" let NERDTreeMinimalUI=1
 
 " Indent
 set shiftwidth=2

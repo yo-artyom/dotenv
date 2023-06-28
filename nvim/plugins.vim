@@ -2,20 +2,22 @@ call plug#begin('~/.vim/bundle')
 
 Plug 'VundleVim/Vundle.vim'
 
-Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive', { 'on': 'Git' }
 
-Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 
-Plug 'scrooloose/nerdcommenter'
-
-Plug 'mileszs/ack.vim'
-
+" Search files
+Plug 'nvim-lua/plenary.nvim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
+Plug 'scrooloose/nerdcommenter'
+
+Plug 'mileszs/ack.vim', { 'on': 'Ack' }
+
 Plug 'tpope/vim-surround'
 
-Plug 'mattn/emmet-vim'
+Plug 'mattn/emmet-vim', { 'for': ['html', 'vue', 'erb'] }
 
 Plug 'mhinz/vim-startify'
 
@@ -23,7 +25,7 @@ Plug 'Lokaltog/vim-easymotion'
 
 Plug 'ntpeters/vim-better-whitespace'
 
-" Themes
+" UI
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'akinsho/bufferline.nvim'
 
