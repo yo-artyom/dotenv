@@ -14,9 +14,8 @@ source $HOME/.config/nvim/conf.vim
 " key maps
 source $HOME/.config/nvim/keymaps.vim
 
-" config for default vim netrw file explorer
-source $HOME/.config/nvim/netrw.vim
-
 " ctrlP wildignore
 source $HOME/.config/nvim/wildignore.vim
 
+" config for LSP
+source $HOME/.config/nvim/lsp.vim

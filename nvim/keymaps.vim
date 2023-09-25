@@ -12,12 +12,26 @@ nnoremap <C-j> i
 imap <C-j> <Esc>
 
 
-nnoremap <leader><Space> :CtrlP<CR>
+" FZF mappings
+" function FZFOpen helps to open files in the current window
+" if current window is NERDTree, it will move cursor to the next window and
+" open file there
+function! FZFOpen(command_str)
+  if (expand('%') =~# 'NERD_tree' && winnr('$') > 1)
+    exe "normal! \<c-w>\<c-w>"
+  endif
+  exe 'normal! ' . a:command_str . "\<cr>"
+endfunction
+nnoremap <silent> <C-t> :call FZFOpen(':Buffers')<CR>
+nnoremap <silent> <C-p> :call FZFOpen(':GFiles')<CR>
+nnoremap <silent> <C-g> :call FZFOpen(':Commands')<CR>
 
 " keys for buffer switch
 map gn :bn<cr>
 map gp :bp<cr>
 map gd :bd<cr>
+nnoremap <silent> gb :BufferLinePick<CR>
+nnoremap <silent> gbp :BufferLineTogglePin<CR>
 
 " Mappings to access buffers
 " Example command: nnoremap <Leader>1 :1b<CR>
@@ -43,12 +57,6 @@ noremap <silent> <C-S-Down> :resize +5<CR>
 noremap <silent> <C-S-Left> :vertical resize -5<CR>
 noremap <silent> <C-S-Up> :resize -5<CR>
 
-
-" Debug shortcuts
-autocmd FileType elixir nnoremap ,p Orequire IEx; IEx.pry<ESC>
-autocmd FileType python nnoremap ,p Oimport code; code.interact(local=dict(globals(), **locals()))<ESC>
-nnoremap ,p Obinding.pry<ESC>
-
 " Copy to clipboard map
 vmap <leader>o "*y
 
@@ -57,4 +65,21 @@ vmap <leader>o "*y
 
 :nnoremap <expr> <F8> ':%s/\<'.expand('<cword>').'\>/<&>/g<CR>'
 
-autocmd FileType go nnoremap dff :GoDef<CR>
+" Elixir
+autocmd FileType elixir nnoremap ,p Orequire IEx; IEx.pry<ESC>
+autocmd FileType elixir nnoremap ,o IO.IO.puts ""<ESC>hi
+
+" Python
+autocmd FileType python nnoremap ,p Oimport code; code.interact(local=dict(globals(), **locals()))<ESC>
+autocmd FileType python nnoremap ,o Oprint("")<ESC>hi
+
+" Ruby
+autocmd FileType ruby nnoremap ,p Obinding.pry<ESC>
+autocmd FileType ruby nnoremap ,o Oputs ""<ESC>hi
+
+" JavaScript
+autocmd FileType javascript,typescript nnoremap ,p Odebugger;<ESC>
+autocmd FileType javascript,typescript nnoremap ,o Oconsole.log('');<ESC>hi
+
+" Go
+autocmd FileType go nnoremap ,o Ofmt.Println("")<ESC>hi

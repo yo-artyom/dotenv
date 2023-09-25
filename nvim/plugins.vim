@@ -2,15 +2,19 @@ call plug#begin('~/.vim/bundle')
 
 Plug 'VundleVim/Vundle.vim'
 
-Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive', { 'on': 'Git' }
 
-Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+
+Plug 'nvim-lua/plenary.nvim'
+
+" Search files
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 Plug 'scrooloose/nerdcommenter'
 
-Plug 'mileszs/ack.vim'
-
-Plug 'kien/ctrlp.vim'
+Plug 'mileszs/ack.vim', { 'on': 'Ack' }
 
 Plug 'tpope/vim-surround'
 
@@ -22,35 +26,20 @@ Plug 'Lokaltog/vim-easymotion'
 
 Plug 'ntpeters/vim-better-whitespace'
 
-" Themes
-Plug 'vim-airline/vim-airline'
-Plug 'edkolev/tmuxline.vim'
+" UI
+Plug 'nvim-lualine/lualine.nvim'
+Plug 'akinsho/bufferline.nvim'
 
-Plug 'mhartington/oceanic-next'
-Plug 'humanoid-colors/vim-humanoid-colorscheme'
+Plug 'rose-pine/neovim'
+Plug 'rebelot/kanagawa.nvim'
 
 " Icons
 Plug 'ryanoasis/vim-devicons'
 
-" Syntax Plugs
-Plug 'pangloss/vim-javascript'
-
-Plug 'fatih/vim-go'
-
-Plug 'elixir-lang/vim-elixir'
-
-Plug 'vim-ruby/vim-ruby'
-
-Plug 'elzr/vim-json'
-
-Plug 'posva/vim-vue'
-
-Plug 'slim-template/vim-slim'
-
-Plug 'fatih/vim-nginx'
-
-Plug 'tomlion/vim-solidity'
+" LSP
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Mics
 Plug 'vimwiki/vimwiki'
+
 call plug#end()
