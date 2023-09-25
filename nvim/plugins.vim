@@ -6,8 +6,9 @@ Plug 'tpope/vim-fugitive', { 'on': 'Git' }
 
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 
-" Search files
 Plug 'nvim-lua/plenary.nvim'
+
+" Search files
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
@@ -17,7 +18,7 @@ Plug 'mileszs/ack.vim', { 'on': 'Ack' }
 
 Plug 'tpope/vim-surround'
 
-Plug 'mattn/emmet-vim', { 'for': ['html', 'vue', 'erb'] }
+Plug 'mattn/emmet-vim'
 
 Plug 'mhinz/vim-startify'
 

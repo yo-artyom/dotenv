@@ -10,7 +10,6 @@
         "go"
       ]
     },
-    "solargraph.formatting": true,
     "terraform": {
 			"command": "terraform-ls",
 			"args": ["serve"],
@@ -18,7 +17,8 @@
 				"terraform",
 				"tf"
 			]
-		}
+		},
+    "codeLens.enable": true,
+    "solargraph.useBundler": true
   }
 }
-

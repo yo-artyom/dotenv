@@ -51,5 +51,7 @@ alias npm='unalias node npm && load_nvm && npm'
 prompt_context () { }
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
+
 eval "$(rbenv init - zsh)"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+

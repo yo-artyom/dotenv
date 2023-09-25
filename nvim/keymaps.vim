@@ -22,7 +22,7 @@ function! FZFOpen(command_str)
   endif
   exe 'normal! ' . a:command_str . "\<cr>"
 endfunction
-nnoremap <silent> <C-b> :call FZFOpen(':Buffers')<CR>
+nnoremap <silent> <C-t> :call FZFOpen(':Buffers')<CR>
 nnoremap <silent> <C-p> :call FZFOpen(':GFiles')<CR>
 nnoremap <silent> <C-g> :call FZFOpen(':Commands')<CR>
 
@@ -57,12 +57,6 @@ noremap <silent> <C-S-Down> :resize +5<CR>
 noremap <silent> <C-S-Left> :vertical resize -5<CR>
 noremap <silent> <C-S-Up> :resize -5<CR>
 
-
-" Debug shortcuts
-autocmd FileType elixir nnoremap ,p Orequire IEx; IEx.pry<ESC>
-autocmd FileType python nnoremap ,p Oimport code; code.interact(local=dict(globals(), **locals()))<ESC>
-nnoremap ,p Obinding.pry<ESC>
-
 " Copy to clipboard map
 vmap <leader>o "*y
 
@@ -70,3 +64,22 @@ vmap <leader>o "*y
 :nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 
 :nnoremap <expr> <F8> ':%s/\<'.expand('<cword>').'\>/<&>/g<CR>'
+
+" Elixir
+autocmd FileType elixir nnoremap ,p Orequire IEx; IEx.pry<ESC>
+autocmd FileType elixir nnoremap ,o IO.IO.puts ""<ESC>hi
+
+" Python
+autocmd FileType python nnoremap ,p Oimport code; code.interact(local=dict(globals(), **locals()))<ESC>
+autocmd FileType python nnoremap ,o Oprint("")<ESC>hi
+
+" Ruby
+autocmd FileType ruby nnoremap ,p Obinding.pry<ESC>
+autocmd FileType ruby nnoremap ,o Oputs ""<ESC>hi
+
+" JavaScript
+autocmd FileType javascript,typescript nnoremap ,p Odebugger;<ESC>
+autocmd FileType javascript,typescript nnoremap ,o Oconsole.log('');<ESC>hi
+
+" Go
+autocmd FileType go nnoremap ,o Ofmt.Println("")<ESC>hi
