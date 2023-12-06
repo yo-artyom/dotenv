@@ -71,4 +71,4 @@ schemes:
       background: '0x2d4f67'
       foreground: '0xc8c093'
 
-colors: *light
+colors: *dark

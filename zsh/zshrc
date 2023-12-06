@@ -43,15 +43,8 @@ export LC_ALL=en_US.UTF-8
 bindkey "^[[1;3C" forward-word
 bindkey "^[[1;3D" backward-word
 
-# nvm loads so slow, so not loading it unless node command used
-alias load_nvm='export NVM_DIR="$HOME/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"'
-alias node='unalias node npm && load_nvm && node'
-alias npm='unalias node npm && load_nvm && npm'
-
 prompt_context () { }
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-eval "$(rbenv init - zsh)"
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
+. /opt/homebrew/opt/asdf/libexec/asdf.sh

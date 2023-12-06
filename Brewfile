@@ -1,4 +1,5 @@
 brew "ack"
+brew "asdf"
 brew "bat"
 brew "lsd"
 brew "go"
@@ -10,4 +11,3 @@ brew "tmux"
 brew "git-extras"
 brew "zsh"
 brew "zsh-completions"
-
