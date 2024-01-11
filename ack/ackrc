@@ -1,6 +1,8 @@
 --color
 
 --ignore-directory=is:node_modules
+--ignore-directory=is:dist
 --ignore-directory=is:log
 --ignore-directory=is:tmp
 --ignore-directory=is:public/packs
+--ignore-directory=is:cache
