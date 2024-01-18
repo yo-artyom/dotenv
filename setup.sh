@@ -10,7 +10,7 @@ ln -sf `pwd`/nvim ~/.config/nvim
 ln -sf `pwd`/tmux/ ~/.tmux
 ln -sf `pwd`/tmux/tmux.conf ~/.tmux.conf
 
-ln -sf `pwd`/alacritty/alacritty.yml ~/.alacritty.yml
+ln -sf `pwd`/alacritty/alacritty.yml ~/.alacritty.toml
 ln -sf `pwd`/alacritty/ ~/.alacritty
 
 ln -sf `pwd`/zsh/zshrc ~/.zshrc

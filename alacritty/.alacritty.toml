@@ -1,0 +1,42 @@
+import = ["/Users/artem.malyshev/.alacritty/currentTheme.toml"]
+live_config_reload = true
+
+[env]
+TERM = "alacritty-direct"
+
+[font]
+size = 16.0
+
+[font.bold]
+family = "DroidSansMono Nerd Font"
+style = "Bold"
+
+[font.bold_italic]
+family = "DroidSansMono Nerd Font"
+style = "Bold Italic"
+
+[font.italic]
+family = "DroidSansMono Nerd Font"
+style = "Italic"
+
+[font.normal]
+family = "DroidSansMono Nerd Font"
+
+[[keyboard.bindings]]
+action = "ToggleFullscreen"
+key = 36
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u001Bb"
+key = "Left"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u001Bf"
+key = "Right"
+mods = "Command"
+
+[window]
+opacity = 0.9
+
