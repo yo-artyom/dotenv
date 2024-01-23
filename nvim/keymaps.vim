@@ -1,7 +1,8 @@
 " delete to t register
 nnoremap d "td
 
-nnoremap <leader>a :Ack<SPACE>
+nnoremap <leader>a :Ack! "\b<C-R><C-W>\b"<CR>
+nnoremap <leader>ack :Ack<SPACE>
 nnoremap <leader>p :NERDTreeToggle<CR>
 
 " imap jj <Esc>
