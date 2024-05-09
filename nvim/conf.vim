@@ -34,24 +34,31 @@ lua << END
 
 require('lualine').setup({
   sections = {
-    lualine_c = {
+      lualine_a = {
           {
-            'filename',
-            file_status = true,
-            newfile_status = false,
-            path = 3,
-            shorting_target = 40,
-            symbols = {
-              modified = '[+]',
-              readonly = '[-]',
-              unnamed = '[No Name]',
-              newfile = '[New]',
-            }
+              'filetype',
+              colored = true,
+              icon_only = false,
+              icon = { align = 'right' },
+          }
+      },
+      lualine_c = {
+          {
+              'filename',
+              file_status = true,
+              newfile_status = false,
+              path = 3,
+              shorting_target = 40,
+              symbols = {
+                  modified = '[+]',
+                  readonly = '[-]',
+                  unnamed = '[No Name]',
+                  newfile = '[New]',
+              }
           }
       },
   },
-
-  extensions = {'fugitive', 'nerdtree', 'quickfix'},
+extensions = {'fugitive', 'nerdtree', 'quickfix'},
 })
 
 require("bufferline").setup{
