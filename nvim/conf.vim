@@ -33,6 +33,24 @@ set guifont=DroidSansMono\ Nerd\ Font:h11
 lua << END
 
 require('lualine').setup({
+  sections = {
+    lualine_c = {
+          {
+            'filename',
+            file_status = true,
+            newfile_status = false,
+            path = 3,
+            shorting_target = 40,
+            symbols = {
+              modified = '[+]',
+              readonly = '[-]',
+              unnamed = '[No Name]',
+              newfile = '[New]',
+            }
+          }
+      },
+  },
+
   extensions = {'fugitive', 'nerdtree', 'quickfix'},
 })
 
