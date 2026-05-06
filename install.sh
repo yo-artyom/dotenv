@@ -1,19 +1,49 @@
 #!/bin/bash
 
-set -eu
+set -euo pipefail
 
-echo "\n\t[Brew install]\n"
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+# 1. Install Homebrew
+if ! command -v brew &> /dev/null; then
+    echo -e "\n\t[Brew install]\n"
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    # Add brew to path for the current session (macOS Apple Silicon path)
+    if [[ -f /opt/homebrew/bin/brew ]]; then
+        eval "$(/opt/homebrew/bin/brew shellenv)"
+    fi
+else
+    echo "Homebrew already installed. Skipping..."
+fi
 
-echo "\n\t[Brew deps]\n"
-brew bundle
+# 2. Brew deps (safe to run repeatedly, but we can check for Brewfile)
+if [[ -f "Brewfile" ]]; then
+    echo -e "\n\t[Brew deps]\n"
+    brew bundle
+fi
 
-echo "\n\t[Plug install]\n"
-sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+# 3. Install vim-plug for Neovim
+VIM_PLUG_PATH="${XDG_DATA_HOME:-$HOME/.local/share}/nvim/site/autoload/plug.vim"
+if [[ ! -f "$VIM_PLUG_PATH" ]]; then
+    echo -e "\n\t[Plug install]\n"
+    curl -fLo "$VIM_PLUG_PATH" --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+else
+    echo "vim-plug already installed. Skipping..."
+fi
 
-echo '[Installing ZSH]'
-chsh -s $(which zsh)
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+# 4. Install ZSH / Oh My Zsh
+if [[ ! -d "$HOME/.oh-my-zsh" ]]; then
+    echo '[Installing Oh My Zsh]'
+    # Use KEEP_ZSHRC to avoid overwriting your existing config
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended --keep-zshrc
+    # Set shell to zsh if it's not already
+    if [[ "$SHELL" != "$(which zsh)" ]]; then
+        chsh -s "$(which zsh)"
+    fi
+else
+    echo "Oh My Zsh already installed. Skipping..."
+fi
 
-./setup.sh
+# Finally run local setup
+if [[ -f "./setup.sh" ]]; then
+    ./setup.sh
+fi

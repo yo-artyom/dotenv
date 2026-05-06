@@ -42,14 +42,14 @@ nvim_init_toggle_theme () {
 # switch theme, $1 is one of ['light', 'dark']
 # theme toggle achieved by replacing a single word in color scheme alacritty config
 alacritty_toggle_theme () {
-  if [ ! -f ~/.alacritty/currentTheme.toml ]
+  if [ ! -f ~/.config/alacritty/currentTheme.toml ]
   then
-    echo 'File ~/.alacritty/currentTheme.toml does not exist'
+    echo 'File ~/.config/alacritty/currentTheme.toml does not exist'
     return
   fi
   # sed does not like symlinks, get the absolute path
-  config_path=$(realpath ~/.alacritty/currentTheme.toml)
-  echo "import = [\"~/.alacritty/$1Theme.toml\" ]" > $config_path
+  config_path=$(realpath ~/.config/alacritty/currentTheme.toml)
+  echo "import = [\"~/.config/alacritty/$1Theme.toml\"]" > $config_path
 }
 
 # TMUX

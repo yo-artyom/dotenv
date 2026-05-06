@@ -1,5 +1,4 @@
-import = ["/Users/artem.malyshev/.alacritty/currentTheme.toml"]
-live_config_reload = true
+general.import = ["~/.config/alacritty/currentTheme.toml"]
 
 [env]
 TERM = "alacritty-direct"
@@ -22,21 +21,17 @@ style = "Italic"
 [font.normal]
 family = "DroidSansMono Nerd Font"
 
-[[keyboard.bindings]]
-action = "ToggleFullscreen"
-key = 36
-mods = "Command"
-
-[[keyboard.bindings]]
-chars = "\u001Bb"
-key = "Left"
-mods = "Command"
-
-[[keyboard.bindings]]
-chars = "\u001Bf"
-key = "Right"
-mods = "Command"
-
 [window]
 opacity = 0.9
+blur = true
 
+[window.padding]
+x = 10
+y = 10
+
+[keyboard]
+bindings = [
+    { key = "Return", mods = "Command", action = "ToggleFullscreen" },
+    { key = "Left", mods = "Command", chars = "\u001bb" },
+    { key = "Right", mods = "Command", chars = "\u001bf" }
+]

@@ -1,6 +1,4 @@
-call plug#begin('~/.vim/bundle')
-
-Plug 'VundleVim/Vundle.vim'
+call plug#begin(stdpath('data') . '/plugged')
 
 Plug 'tpope/vim-fugitive', { 'on': 'Git' }
 
@@ -22,7 +20,7 @@ Plug 'mattn/emmet-vim'
 
 Plug 'mhinz/vim-startify'
 
-Plug 'Lokaltog/vim-easymotion'
+Plug 'easymotion/vim-easymotion'
 
 Plug 'ntpeters/vim-better-whitespace'
 

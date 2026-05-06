@@ -54,13 +54,4 @@ autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.org
 
 let g:coc_global_extensions = ['coc-solargraph']
 
-" function! DisableCocForDirectory()
-  " if (expand('%:p:h') =~ '/Users/artem.malyshev/On/on')
-    " CocDisable
-  " else
-    " CocEnable
-  " endif
-" endfunction
-" autocmd BufEnter * call DisableCocForDirectory()
-
 

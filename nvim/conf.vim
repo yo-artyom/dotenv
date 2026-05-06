@@ -104,11 +104,6 @@ set colorcolumn=80
 
 set linebreak
 
-let g:ctrlp_prompt_mappings = {
-  \ 'ToggleRegex()':        ['<F5>'],
-  \ 'PrtClearCache()':      ['<c-r>'],
-  \ }
-
 set noswapfile
 
 " Set title for terminal tab

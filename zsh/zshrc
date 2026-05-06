@@ -39,7 +39,7 @@ alias v="nvim"
 alias vim="nvim"
 alias b="bat"
 alias ls="lsd"
-alias tdm="/usr/local/bin/toggle_dark_theme.sh"
+alias tdm="~/.local/bin/toggle_dark_theme.sh"
 
 alias phs="iex -S mix phoenix.server"
 
@@ -51,5 +51,4 @@ bindkey "^[[1;3D" backward-word
 prompt_context () { }
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
-
-. /opt/homebrew/opt/asdf/libexec/asdf.sh
+eval "$(mise activate zsh)"
