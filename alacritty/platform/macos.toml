@@ -1,0 +1,9 @@
+[window]
+blur = true
+
+[keyboard]
+bindings = [
+    { key = "Return", mods = "Command", action = "ToggleFullscreen" },
+    { key = "Left", mods = "Command", chars = "\u001bb" },
+    { key = "Right", mods = "Command", chars = "\u001bf" }
+]

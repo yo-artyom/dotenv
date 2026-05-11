@@ -1,0 +1,7 @@
+[keyboard]
+bindings = [
+    { key = "Back", chars = "\u007f" },
+    { key = "Return", mods = "Control|Shift", action = "ToggleFullscreen" },
+    { key = "Left", mods = "Alt", chars = "\u001bb" },
+    { key = "Right", mods = "Alt", chars = "\u001bf" }
+]

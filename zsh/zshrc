@@ -1,28 +1,15 @@
-if [ -f ~/.zshrc_private ]; then
-    source ~/.zshrc_private
-fi
-
-export PATH=$PATH:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/homebrew/bin:$PATH
-export PATH=$PATH:/Users/$USER/go/bin:$PATH
-export PATH=$PATH:/Users/$USER/Library/Python/3.8/bin:$PATH
-export PATH=$PATH:/opt/homebrew/opt/ruby/bin:$PATH
-
-export PATH=$PATH:/Users/$USER/.cargo/bin
-export PATH=$PATH:/Users/$USER/.foundry/bin
-export PATH=$PATH:/Users/$USER/dotenv/scripts
-
-export PATH=$PATH:/Users/$USER/dotenv/scripts
-export PATH=$PATH:/Users/$USER/.yarn/bin
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
+export PATH="$HOME/.local/bin:$HOME/go/bin:$HOME/.cargo/bin:$HOME/.foundry/bin:$HOME/.yarn/bin:$PATH"
 
 export EDITOR=nvim
 
 export ACKRC=$HOME/.ackrc
 
-export GOPATH=/Users/$USER/go:$HOME/Learning/Go
+export GOPATH=$HOME/go
 export GODOCC_STYLE=solarized-dark
 
-export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
-export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:$PKG_CONFIG_PATH
+export LD_LIBRARY_PATH="/usr/local/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+export PKG_CONFIG_PATH="/usr/local/lib/pkgconfig${PKG_CONFIG_PATH:+:$PKG_CONFIG_PATH}"
 
 plugins=(tmux git history-substring-search bundler rails ruby)
 export ZSH=$HOME/.oh-my-zsh
@@ -32,23 +19,43 @@ export CURRENT_THEME=0
 
 ZSH_THEME="agnoster"
 
+if [[ -f "$HOME/.config/dotenv/zsh-platform.zsh" ]]; then
+    source "$HOME/.config/dotenv/zsh-platform.zsh"
+fi
+
 source $ZSH/oh-my-zsh.sh
 
 ## Aliases
 alias v="nvim"
 alias vim="nvim"
-alias b="bat"
-alias ls="lsd"
+
+if command -v bat > /dev/null 2>&1; then
+    alias b="bat"
+elif command -v batcat > /dev/null 2>&1; then
+    alias b="batcat"
+fi
+
+if command -v lsd > /dev/null 2>&1; then
+    alias ls="lsd"
+fi
+
 alias tdm="~/.local/bin/toggle_dark_theme.sh"
 
 alias phs="iex -S mix phoenix.server"
 
 export LC_ALL=en_US.UTF-8
 
+bindkey '^?' backward-delete-char
+bindkey '^H' backward-delete-char
 bindkey "^[[1;3C" forward-word
 bindkey "^[[1;3D" backward-word
 
 prompt_context () { }
 
-eval "$(/opt/homebrew/bin/brew shellenv)"
-eval "$(mise activate zsh)"
+if command -v mise > /dev/null 2>&1; then
+    eval "$(mise activate zsh)"
+fi
+
+if [[ -f ~/.zshrc_private ]]; then
+    source ~/.zshrc_private
+fi

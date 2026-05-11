@@ -2,11 +2,15 @@
 
 set -euo pipefail
 
-DOTFILES_DIR="$PWD"
+DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+source "$DOTFILES_DIR/lib/platform.sh"
+
+PLATFORM="$(require_supported_platform)"
+source_platform_script setup "$PLATFORM"
 
 echo '[Creating symlinks to configs]'
 
-# 2. Helper function to make symlinking cleaner and provide visual feedback
 link_file() {
     local src="$1"
     local dest="$2"
@@ -17,9 +21,9 @@ link_file() {
 # Ensure base config directories exist before symlinking inside them
 mkdir -p ~/.config
 mkdir -p ~/.config/alacritty
+mkdir -p ~/.config/dotenv
 mkdir -p ~/.local/bin
 
-# 3. Create symlinks
 link_file "$DOTFILES_DIR/nvim/vimrc" ~/.vimrc
 link_file "$DOTFILES_DIR/nvim" ~/.config/nvim
 
@@ -43,6 +47,9 @@ elif [[ -f "$DOTFILES_DIR/alacritty/alacritty.yml" ]]; then
     link_file "$DOTFILES_DIR/alacritty/alacritty.yml" ~/.alacritty.yml
 fi
 
+echo '[Linking platform overlays]'
+platform_link_overlays
+
 echo '[Installing custom scripts]'
 for script in "$DOTFILES_DIR/scripts/"*.sh; do
     if [[ -f "$script" ]]; then
@@ -54,14 +61,10 @@ done
 
 echo '[Configuring Git]'
 git config --global core.excludesfile ~/.global_gitignore
-# 5. Removed 'sudo' from git config: Setting user aliases with sudo writes to the root user's ~/.gitconfig
 git config --global alias.d $'!sh -c \'$HOME/.local/bin/git_diff_bat.sh\' -'
 
 echo '[Configuring language plugins]'
-# 6. Updated to use 'mise' instead of 'asdf', consistent with our new stack
 if command -v mise &> /dev/null; then
-    # In mise, plugins are installed automatically when you request a language version,
-    # but you can explicitly install the latest versions like this:
     echo "  -> Installing latest Ruby and Node via mise"
     mise use --global ruby@latest
     mise use --global node@latest
@@ -70,16 +73,9 @@ else
 fi
 
 echo '[Installing fonts]'
-for font in "$DOTFILES_DIR/fonts/"*.{otf,ttf}; do
-    if [[ -f "$font" ]]; then
-        font_name=$(basename "$font")
-        if [[ ! -f "$HOME/Library/Fonts/$font_name" ]]; then
-            echo "  -> Installing $font_name"
-            cp "$font" "$HOME/Library/Fonts/"
-        else
-            echo "  -> $font_name already installed. Skipping..."
-        fi
-    fi
-done
+install_platform_fonts
+
+echo '[Applying platform defaults]'
+configure_platform_defaults
 
 echo '[Done c:]'

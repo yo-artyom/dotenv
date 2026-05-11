@@ -1,27 +1,30 @@
 #!/bin/bash
 
-toggleToTheme="dark"
+toggle_to_theme="dark"
+state_file="$HOME/.currentColorScheme"
 
-if [ ! -f ~/.currentColorScheme ]
-then
-  echo "dark" >> ~/.currentColorScheme
-  toggleToTheme="light"
+if [[ ! -f "$state_file" ]]; then
+  printf 'dark\n' > "$state_file"
+  toggle_to_theme="light"
 fi
 
-if [ $(cat ~/.currentColorScheme) == "dark" ]
-then
-  echo "light" > ~/.currentColorScheme
-  toggleToTheme="light"
+if [[ "$(<"$state_file")" == "dark" ]]; then
+  printf 'light\n' > "$state_file"
+  toggle_to_theme="light"
 else
-  echo "dark" > ~/.currentColorScheme
+  printf 'dark\n' > "$state_file"
 fi
 
 # NVIM + TMUX change opened terminal colos
 # Send toggle dark mode for each (n)vim window in current tmux session
 nvim_tmux_toggle_theme () {
+  if ! tmux list-windows > /dev/null 2>&1; then
+    return
+  fi
+
   for wix in $(tmux list-windows -F '#{window_index}')
   do
-    for pix in $(tmux list-panes -F '#{window_index}.#{pane_index}' -t $wix)
+    for pix in $(tmux list-panes -F '#{window_index}.#{pane_index}' -t "$wix")
     do
       is_vim="ps -o state= -o comm= -t '#{pane_tty}'  | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|n?vim?x?)(diff)?\$'"
       tmux if-shell -t "$pix" "$is_vim" "send-keys -t $pix escape ENTER"
@@ -33,44 +36,54 @@ nvim_tmux_toggle_theme () {
 # NVIM
 # changes initial nvim theme
 nvim_init_toggle_theme () {
-  # sed does not like symlinks, get the absolute path
-  config_path=$(realpath ~/.config/nvim/color.vim)
-  sed -i "" -e "s#^let currentTheme=\".*\"#let currentTheme=\"$1\"#g" $config_path
+  local config_path="$HOME/.config/nvim/color.vim"
+  local temp_file
+
+  if [[ ! -f "$config_path" ]]; then
+    echo "File $config_path does not exist"
+    return
+  fi
+
+  temp_file="$(mktemp)"
+  sed "s#^let currentTheme=\".*\"#let currentTheme=\"$1\"#g" "$config_path" > "$temp_file"
+  mv "$temp_file" "$config_path"
 }
 
 # Alacritty
 # switch theme, $1 is one of ['light', 'dark']
 # theme toggle achieved by replacing a single word in color scheme alacritty config
 alacritty_toggle_theme () {
-  if [ ! -f ~/.config/alacritty/currentTheme.toml ]
-  then
+  local config_path="$HOME/.config/alacritty/currentTheme.toml"
+
+  if [[ ! -f "$config_path" ]]; then
     echo 'File ~/.config/alacritty/currentTheme.toml does not exist'
     return
   fi
-  # sed does not like symlinks, get the absolute path
-  config_path=$(realpath ~/.config/alacritty/currentTheme.toml)
-  echo "import = [\"~/.config/alacritty/$1Theme.toml\"]" > $config_path
+
+  printf 'import = ["~/.config/alacritty/%sTheme.toml"]\n' "$1" > "$config_path"
 }
 
 # TMUX
 # switch theme, $1 is one of ['light', 'dark']
 # theme toggle achieved by replacing a single word in color scheme tmux config
 tmux_toggle_theme() {
-  if [ ! -f ~/.tmux/current_theme.conf ]
-  then
+  local config_path="$HOME/.tmux/current_theme.conf"
+
+  if [[ ! -f "$config_path" ]]; then
     echo 'File ~/.tmux/current_theme.conf does not exist'
     return
   fi
-  # sed does not like symlinks, get the absolute path
-  config_path=$(realpath ~/.tmux/current_theme.conf)
 
-  echo "source-file ~/.tmux/$1_theme.conf" > $config_path
-  tmux source-file $config_path
+  printf 'source-file ~/.tmux/%s_theme.conf\n' "$1" > "$config_path"
+
+  if tmux list-windows > /dev/null 2>&1; then
+    tmux source-file "$config_path"
+  fi
 }
 
-alacritty_toggle_theme $toggleToTheme
-nvim_tmux_toggle_theme $toggleToTheme
-nvim_init_toggle_theme $toggleToTheme
-tmux_toggle_theme $toggleToTheme
+alacritty_toggle_theme "$toggle_to_theme"
+nvim_tmux_toggle_theme "$toggle_to_theme"
+nvim_init_toggle_theme "$toggle_to_theme"
+tmux_toggle_theme "$toggle_to_theme"
 
-echo "switched to $toggleToTheme."
+echo "switched to $toggle_to_theme."

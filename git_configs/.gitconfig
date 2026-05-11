@@ -1,5 +1,5 @@
 [core]
-	excludesfile = /Users/artem.malyshev/.global_gitignore
+	excludesfile = /home/yoart/.global_gitignore
 [alias]
 	d = !sh -c '$HOME/.local/bin/git_diff_bat.sh' -
 [user]

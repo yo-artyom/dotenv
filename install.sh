@@ -2,25 +2,16 @@
 
 set -euo pipefail
 
-# 1. Install Homebrew
-if ! command -v brew &> /dev/null; then
-    echo -e "\n\t[Brew install]\n"
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    # Add brew to path for the current session (macOS Apple Silicon path)
-    if [[ -f /opt/homebrew/bin/brew ]]; then
-        eval "$(/opt/homebrew/bin/brew shellenv)"
-    fi
-else
-    echo "Homebrew already installed. Skipping..."
-fi
+DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-# 2. Brew deps (safe to run repeatedly, but we can check for Brewfile)
-if [[ -f "Brewfile" ]]; then
-    echo -e "\n\t[Brew deps]\n"
-    brew bundle
-fi
+source "$DOTFILES_DIR/lib/platform.sh"
 
-# 3. Install vim-plug for Neovim
+PLATFORM="$(require_supported_platform)"
+source_platform_script install "$PLATFORM"
+
+install_platform_packages
+
+# Install vim-plug for Neovim
 VIM_PLUG_PATH="${XDG_DATA_HOME:-$HOME/.local/share}/nvim/site/autoload/plug.vim"
 if [[ ! -f "$VIM_PLUG_PATH" ]]; then
     echo -e "\n\t[Plug install]\n"
@@ -30,20 +21,20 @@ else
     echo "vim-plug already installed. Skipping..."
 fi
 
-# 4. Install ZSH / Oh My Zsh
+# Install ZSH / Oh My Zsh
 if [[ ! -d "$HOME/.oh-my-zsh" ]]; then
     echo '[Installing Oh My Zsh]'
     # Use KEEP_ZSHRC to avoid overwriting your existing config
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended --keep-zshrc
     # Set shell to zsh if it's not already
-    if [[ "$SHELL" != "$(which zsh)" ]]; then
-        chsh -s "$(which zsh)"
+    if [[ "$SHELL" != "$(command -v zsh)" ]]; then
+        chsh -s "$(command -v zsh)"
     fi
 else
     echo "Oh My Zsh already installed. Skipping..."
 fi
 
 # Finally run local setup
-if [[ -f "./setup.sh" ]]; then
-    ./setup.sh
+if [[ -f "$DOTFILES_DIR/setup.sh" ]]; then
+    "$DOTFILES_DIR/setup.sh"
 fi

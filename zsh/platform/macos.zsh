@@ -1,0 +1,5 @@
+export PATH="/opt/homebrew/bin:/opt/homebrew/opt/ruby/bin:$PATH"
+
+if command -v brew > /dev/null 2>&1; then
+    eval "$(brew shellenv)"
+fi
