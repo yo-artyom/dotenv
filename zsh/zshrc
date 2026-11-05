@@ -41,6 +41,7 @@ alias b="bat"
 alias ls="lsd"
 alias tdm="~/.local/bin/toggle_dark_theme.sh"
 alias oc="opencode"
+alias oca="opencode --auto"
 
 alias phs="iex -S mix phoenix.server"
 
