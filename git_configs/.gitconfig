@@ -5,3 +5,9 @@
 [user]
 	email = q3pp@yandex.ru
 	name = Artyom
+[credential "https://github.com"]
+	helper = 
+	helper = !/Users/artem.malyshev/.local/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/Users/artem.malyshev/.local/bin/gh auth git-credential

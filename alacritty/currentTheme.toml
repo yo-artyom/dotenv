@@ -1,1 +1,1 @@
-general.import = ["~/.config/alacritty/darkTheme.toml"]
+import = ["~/.config/alacritty/lightTheme.toml"]

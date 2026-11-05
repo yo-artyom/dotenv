@@ -20,7 +20,6 @@ mkdir -p ~/.config/alacritty
 mkdir -p ~/.local/bin
 
 # 3. Create symlinks
-link_file "$DOTFILES_DIR/nvim/vimrc" ~/.vimrc
 link_file "$DOTFILES_DIR/nvim" ~/.config/nvim
 
 link_file "$DOTFILES_DIR/tmux/" ~/.tmux

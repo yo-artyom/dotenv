@@ -20,15 +20,9 @@ if [[ -f "Brewfile" ]]; then
     brew bundle
 fi
 
-# 3. Install vim-plug for Neovim
-VIM_PLUG_PATH="${XDG_DATA_HOME:-$HOME/.local/share}/nvim/site/autoload/plug.vim"
-if [[ ! -f "$VIM_PLUG_PATH" ]]; then
-    echo -e "\n\t[Plug install]\n"
-    curl -fLo "$VIM_PLUG_PATH" --create-dirs \
-       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-else
-    echo "vim-plug already installed. Skipping..."
-fi
+# 3. Neovim plugins are managed by lazy.nvim, which bootstraps itself on
+# first launch of Neovim (see nvim/lua/config/lazy.lua). No manual install
+# step needed here.
 
 # 4. Install ZSH / Oh My Zsh
 if [[ ! -d "$HOME/.oh-my-zsh" ]]; then
