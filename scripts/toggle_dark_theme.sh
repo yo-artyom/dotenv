@@ -82,7 +82,8 @@ tmux_toggle_theme() {
 opencode_toggle_theme() {
   local mode="$1"
   local theme
-  local config="$HOME/.config/opencode/tui.json"
+  local config="${XDG_CONFIG_HOME:-$HOME/.config}/opencode/cli.json"
+  local temp
 
   case "$mode" in
     dark)  theme="kanagawa" ;;
@@ -93,24 +94,27 @@ opencode_toggle_theme() {
       ;;
   esac
 
-  mkdir -p "$(dirname "$config")"
-
-  if [ -f "$config" ]; then
-    local temp
-    temp="$(mktemp)"
-
-    jq --arg theme "$theme" \
-      '.theme = $theme' \
-      "$config" > "$temp" &&
-      mv "$temp" "$config"
-  else
-    jq -n \
-      --arg theme "$theme" \
-      '{
-        "$schema": "https://opencode.ai/tui.json",
-        "theme": $theme
-      }' > "$config"
+  mkdir -p "$(dirname "$config")" || return 1
+  # Update the target rather than replacing a symlink, if the config is linked.
+  if [ -L "$config" ]; then
+    config="$(realpath "$config")" || return 1
   fi
+  temp="$(mktemp "${config}.XXXXXX")" || return 1
+
+  if { if [ -f "$config" ]; then
+    jq --arg theme "$theme" --arg mode "$mode" \
+      '.theme = ((if (.theme | type) == "object" then .theme else {} end) + {name: $theme, mode: $mode})' \
+      "$config"
+  else
+    jq -n --arg theme "$theme" --arg mode "$mode" \
+      '{"$schema": "https://opencode.ai/v2/cli.json", "theme": {name: $theme, mode: $mode}}'
+  fi; } > "$temp" && mv "$temp" "$config"; then
+    return 0
+  fi
+
+  rm -f "$temp"
+  echo "Failed to update OpenCode theme in $config" >&2
+  return 1
 }
 
 # Execute all toggles
